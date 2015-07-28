@@ -81,23 +81,7 @@ window.onload = function () {
     } ());
 
     birdAnimationFrame();
-
-    //Unnecessary   
-    /*function obstacleFactory() {
-
-        var minHeight = 100,
-            randomHeightPart = 200,
-            obstacleHeight = Math.round(Math.random() * randomHeightPart + minHeight),
-            obstacleWidth = obstacleHeight * 0.3,
-            // Never to be exactly sure where the object will apear -> TOP or BOTTOM
-            obstacleYPosition = Math.random() > 0.5 ? 0 : CONSTANTS.STAGE_HEIGHT - obstacleHeight,
-            obstacleXPosition = CONSTANTS.STAGE_WIDTH;
-
-        var genericObstacle = obstacle.init(obstacleXPosition, obstacleYPosition, obstacleWidth, obstacleHeight);
-
-        return genericObstacle;
-    }*/
-
+    
     function areColliding(bird, drawableObject) {
         var inBottomLeft = false,
             inBottomRight = false,
