@@ -15,7 +15,7 @@ var homeScreen = new Kinetic.Layer(),
     };
 
 //------- start background   
-var backround = new Kinetic.Rect({
+var backgroundHome = new Kinetic.Rect({
     width: CONSTANTS.STAGE_WIDTH,
     height: CONSTANTS.STAGE_HEIGHT,
     x: 0,
@@ -23,10 +23,10 @@ var backround = new Kinetic.Rect({
     fillPriority: "pattern"
 });
 
-var backroundImage = new Image();
-backroundImage.src = 'images\\Navigation\\background.png';
-backroundImage.onload = function() {
-    backround.setFillPatternImage(backroundImage);
+var backgroundHomeImage = new Image();
+backgroundHomeImage.src = 'images\\Navigation\\background_home.png';
+backgroundHomeImage.onload = function() {
+    backgroundHome.setFillPatternImage(backgroundHomeImage);
 };
 //------- end background   
 
@@ -78,7 +78,7 @@ startButtonImage.onload = function() {
 };
 //------- end btnStart 
 
-homeScreen.add(backround);
+homeScreen.add(backgroundHome);
 homeScreen.add(howToPlay);
 homeScreen.add(btnOptions);
 homeScreen.add(btnStart);
@@ -86,18 +86,15 @@ homeScreen.add(btnStart);
 
 
 //--------- start 'creating and dispatching events'
-var navToHome = new CustomEvent(NAVIGATE_SCREEN_EVENT.HOME, {
+var navToIngame = new CustomEvent(NAVIGATE_SCREEN_EVENT.INGAME, {
     detail: {},
     bubbles: true,
     cancelable: false
 });
 
 btnStart.addEventListener('click', function(ev) {
-    this.dispatchEvent(navToHome);
+    window.dispatchEvent(navToIngame);
 });
-window.addEventListener(NAVIGATE_SCREEN_EVENT.HOME, function() {
-    console.log('we change screen to HOME');
-}, true);
 
 
 var navToOptions = new CustomEvent(NAVIGATE_SCREEN_EVENT.OPTIONS,{
@@ -107,9 +104,7 @@ var navToOptions = new CustomEvent(NAVIGATE_SCREEN_EVENT.OPTIONS,{
 });
 
 btnOptions.addEventListener('click', function() {
-    this.dispatchEvent(navToOptions);
+    window.dispatchEvent(navToOptions);
 });
-window.addEventListener(NAVIGATE_SCREEN_EVENT.OPTIONS, function() {
-    console.log('we change screen to OPTIONS');
-}, true);
+
 //--------- end 'creating and dispatching events'
